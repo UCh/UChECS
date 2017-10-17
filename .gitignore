@@ -4,10 +4,7 @@
 /[Bb]uild/
 /[Bb]uilds/
 /Assets/AssetStoreTools*
-
-#Dependencies
-/Assets/Plugins*
-!/Assets/Plugins/UChECS*
+/Assets/Plugins/Zenject*
 
 # Visual Studio 2015 cache directory
 /.vs/
