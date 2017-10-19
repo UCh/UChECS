@@ -1,3 +1,23 @@
 plugins {
     id 'com.banderous.getpack' version '0.2.0'
+    id 'org.ajoberstar.grgit' version '2.0.1'
 }
+
+apply plugin: "java"
+apply plugin: "groovy"
+
+import org.ajoberstar.grgit.Grgit
+
+task uploadToGit{
+  doFirst{
+
+    def grgit = Grgit.open(dir: '../artifact_repo/') 
+    grgit.add(patterns: ['.'], update: true)
+    grgit.add(patterns: ['.'], update: false)
+    grgit.commit(message: 'Publishing artifacs', amend: true)
+    grgit.pull()
+    grgit.push()
+  }
+}
+
+publish.dependsOn(uploadToGit)

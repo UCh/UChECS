@@ -1,4 +1,7 @@
 {
   "repositories": ["https://raw.githubusercontent.com/UCh/artifact_repo/master/"],
-  "dependencies": ["modesttree:zenject:5.4.0"]
+  "dependencies": [
+    "modesttree:zenject:5.4.0",
+    "unity:unittesttools:1.5.9"
+  ]
 }
