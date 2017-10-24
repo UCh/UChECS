@@ -4,8 +4,8 @@
       "id": "uchlab:uchecs:0.1.0",
       "roots": [
         "Plugins/UChECS/*",
-        "Plugins/UChECS/Scripts**",
-        "Plugins/UChECS/Prefabs**"
+        "Plugins/UChECS/Scripts/**",
+        "Plugins/UChECS/Prefabs/**"
       ],
       "dependencies": ["modesttree:zenject:5.4.0"]
     }
