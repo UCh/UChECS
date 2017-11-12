@@ -24,6 +24,18 @@ namespace uchlab.ecs.zenject {
         protected abstract void registerComponents();
 
         protected abstract void unregisterComponents();
+        protected void AddComponent<T>(){
+            repository.AddComponent<T>(gameObject,GetComponent<T>());
+        }
+        protected void AddComponent<T>(T component){
+            repository.AddComponent<T>(gameObject,component);
+        }
+        protected void RemoveComponent<T>(){
+            RemoveComponent(GetComponent<T>());
+        }
+       protected void RemoveComponent(object component){
+            repository.RemoveComponent(gameObject,component);
+        }
 
         void OnEnable() {
             if (repository != null && !AttachedToEntity)

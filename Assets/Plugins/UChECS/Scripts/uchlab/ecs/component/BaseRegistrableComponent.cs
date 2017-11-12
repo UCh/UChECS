@@ -1,25 +1,20 @@
 namespace uchlab.ecs {
     public class BaseRegistrableComponent : IRegistrableComponent {
-
-        private Entity entity;
-
         public Entity Entity {
-            get {
-                return entity;
-            }
+            get; private set;
         }
 
-        public void AttachedTo(Entity entity) {
-            this.entity = entity;
+        public virtual void AttachedTo(Entity entity) {
+            Entity = entity;
         }
 
-        public void Detach() {
-            entity = null;
+        public virtual void Detach() {
+            Entity = null;
         }
 
         public bool IsAttachedToEntity {
             get {
-                return entity != null;
+                return Entity != null;
             }
         }
 
