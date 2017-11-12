@@ -4,9 +4,10 @@
 /[Bb]uild/
 /[Bb]uilds/
 /Assets/**
+!/Assets/Plugins/
 !/Assets/Plugins/UChECS
 !/Assets/Plugins/UChECS.meta
-!/Assets/Plugins/UChECS/**
+!/Assets/Plugins/UChECS**
 
 # Visual Studio 2015 cache directory
 /.vs/
