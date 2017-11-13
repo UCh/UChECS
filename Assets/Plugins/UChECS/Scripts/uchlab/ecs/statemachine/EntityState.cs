@@ -7,9 +7,8 @@ namespace uchlab.ecs.statemachine
     {
         public T Key { get; private set; }
         private List<object> components;
-        private List<Type> componentsType;
         private List<Func<object>> providers;
-        private List<Type> providersType;
+        private List<Type> componentsType;
 
         public EntityState(T key)
         {
@@ -17,7 +16,6 @@ namespace uchlab.ecs.statemachine
             components = new List<object>();
             componentsType = new List<Type>();
             providers = new List<Func<object>>();
-            providersType = new List<Type>();
         }
         public EntityState<T> withComponent<C>(object component)
         {
@@ -38,10 +36,10 @@ namespace uchlab.ecs.statemachine
         {
             return withProvider(provider, typeof(C));
         }
-        public EntityState<T> withProvider(Func<object> provider, Type compoenentType)
+        public EntityState<T> withProvider(Func<object> provider, Type componentType)
         {
             providers.Add(provider);
-            providersType.Add(compoenentType);
+            componentsType.Add(componentType);
             return this;
         }
 
@@ -60,14 +58,9 @@ namespace uchlab.ecs.statemachine
 
         public void Exit(Entity entity)
         {
-            for (int i = 0; i < components.Count; i++)
+            for (int i = 0; i < componentsType.Count; i++)
             {
-                entity.RemoveComponent(components[i]);
-            }
-
-            for (int i = 0; i < providers.Count; i++)
-            {
-                entity.AddComponent(providers[i]());
+                entity.RemoveComponent(componentsType[i]);
             }
         }
 

@@ -6,7 +6,6 @@ namespace uchlab.ecs.statemachine
 {
     public class EntityStateMachine<T> : BaseRegistrableComponent
     {
-
         public EntityStateMachine()
         {
             stateTypeMap = new Dictionary<T, EntityState<T>>();
