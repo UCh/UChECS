@@ -2,20 +2,29 @@ using System;
 using System.Collections.Generic;
 using uchlab.ecs;
 
-namespace galaxyatwar.Assets.Plugins.UChECS.Scripts.uchlab.ecs.commands
+namespace uchlab.ecs.commands
 {
     public class BaseEntityCommand
     {
+        public readonly string name;
         private readonly HashSet<Type> _requiredComponents;
 
-        public BaseEntityCommand(HashSet<Type> requiredCompoenents = null)
+        public BaseEntityCommand(string name = "")
         {
-            _requiredComponents = requiredCompoenents;
+            _requiredComponents = new HashSet<Type>();
+            this.name = name;
         }
+
+        protected BaseEntityCommand RequiresComponent<T>(){
+            _requiredComponents.Add(typeof(T));
+            return this;
+        }
+
+        
 
         public bool CanExecuteOn(Entity entity)
         {
-            return _requiredComponents == null || _requiredComponents.IsSubsetOf(entity.ComponentTypes);
+            return _requiredComponents.IsSubsetOf(entity.ComponentTypes);
         }
     }
 
