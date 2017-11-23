@@ -11,6 +11,7 @@ namespace uchlab.ecs.statemachine
             stateTypeMap = new Dictionary<T, EntityState<T>>();
         }
         public EntityState<T> State { get; private set; }
+        public T StateKey { get{ return State.Key;} }
         private Dictionary<T, EntityState<T>> stateTypeMap;
         override public void AttachedTo(Entity entity)
         {

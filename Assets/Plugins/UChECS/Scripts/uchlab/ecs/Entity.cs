@@ -112,6 +112,7 @@ namespace uchlab.ecs
             if (componentTypes.Remove(componentType))
             {
                 componentsByType.Remove(componentType);
+                typesByComponent.Remove(component);
                 if (component is IRegistrableComponent)
                 {
                     var registrable = (IRegistrableComponent)component;

@@ -8,6 +8,7 @@ namespace uchlab.ecs.commands
     {
         string Name { get; }
         bool CanExecuteOn(Entity entity);
+        bool IsInmediate {get;}
 
         void Start(Entity entity);
         void Cancel();
