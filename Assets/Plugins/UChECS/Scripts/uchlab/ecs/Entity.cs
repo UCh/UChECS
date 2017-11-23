@@ -12,6 +12,8 @@ namespace uchlab.ecs
 
         public readonly GameObject gameObject;
 
+        public event Action<Entity> OnDispose;
+
         private HashSet<Type> componentTypes = new HashSet<Type>();
         private Dictionary<Type, object> componentsByType = new Dictionary<Type, object>();
         private Dictionary<object, Type> typesByComponent = new Dictionary<object, Type>();
@@ -157,9 +159,12 @@ namespace uchlab.ecs
 
         public void Dispose()
         {
+            if(OnDispose != null){
+                OnDispose(this);
+            }
+            OnDispose = null;
             componentTypes.Clear();
             componentsByType.Clear();
-
 
             DestroyGameObject();
         }
