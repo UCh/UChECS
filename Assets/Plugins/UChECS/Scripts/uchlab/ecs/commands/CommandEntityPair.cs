@@ -11,4 +11,5 @@ namespace uchlab.ecs.commands
             Command = command;
         }
     }
+    
 }
